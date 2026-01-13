@@ -6,19 +6,13 @@
        default-locale="es-ES">
 
   <info>
-    <title>APA Español – citas ordenadas por año</title>
-    <id>http://www.zotero.org/styles/apa-es-orden-por-ano</id>
-    <link href="http://www.zotero.org/styles/apa-es-orden-por-ano" rel="self"/>
+    <title>APA Español – citas por año y apellido solo</title>
+    <id>http://www.zotero.org/styles/apa-es-orden-por-ano-apellido</id>
     <link href="http://www.zotero.org/styles/apa" rel="template"/>
-    <author>
-      <name>Adaptación personalizada</name>
-    </author>
     <category citation-format="author-date"/>
-    <summary>APA en español con citas en texto ordenadas por año y uso de "y" en lugar de "&amp;".</summary>
     <updated>2026-01-13</updated>
   </info>
 
-  <!-- ===== LOCALES ===== -->
   <locale xml:lang="es">
     <terms>
       <term name="and">y</term>
@@ -28,10 +22,10 @@
 
   <!-- ===== MACROS ===== -->
 
+  <!-- SOLO APELLIDO EN TEXTO -->
   <macro name="author-intext">
     <names variable="author">
-      <name and="text" initialize-with=". " delimiter=", "/>
-      <label form="short" prefix=", "/>
+      <name form="short" and="text" delimiter=", "/>
       <substitute>
         <names variable="editor"/>
         <text variable="title"/>
@@ -39,6 +33,7 @@
     </names>
   </macro>
 
+  <!-- BIBLIOGRAFÍA NORMAL -->
   <macro name="author-bib">
     <names variable="author">
       <name and="text" initialize-with=". " delimiter=", "/>
@@ -81,10 +76,9 @@
     </names>
   </macro>
 
-  <!-- ===== CITATION (EN TEXTO) ===== -->
+  <!-- ===== CITAS EN TEXTO ===== -->
   <citation collapse="year" disambiguate-add-year-suffix="true">
     <sort>
-      <!-- ORDEN POR AÑO -->
       <key macro="date-sort-group" sort="ascending"/>
       <key macro="date-sort" sort="ascending"/>
       <key macro="author-sort" names-min="3" names-use-first="1"/>
@@ -99,7 +93,7 @@
     </layout>
   </citation>
 
-  <!-- ===== BIBLIOGRAPHY ===== -->
+  <!-- ===== BIBLIOGRAFÍA ===== -->
   <bibliography hanging-indent="true" et-al-min="7" et-al-use-first="6">
     <sort>
       <key macro="author-sort"/>
