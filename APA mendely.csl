@@ -23,10 +23,12 @@
   <!-- ===== MACROS ===== -->
 
  <macro name="author-intext">
-  <names variable="author"
-         et-al-min="3"
-         et-al-use-first="1">
-    <name form="short" and="text" delimiter=", "/>
+  <names variable="author">
+    <name form="short"
+          and="text"
+          delimiter=", "
+          initialize-with=""
+          name-as-sort-order="false"/>
     <substitute>
       <names variable="editor"/>
       <text variable="title"/>
@@ -113,4 +115,5 @@
   </bibliography>
 
 </style>
+
 
