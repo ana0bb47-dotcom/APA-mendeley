@@ -6,7 +6,7 @@
        default-locale="es-ES">
 
   <info>
-    <title>APA Español – citas por año, apellido solo y et al.</title>
+    <title>APA Español – Breso</title>
     <id>http://www.zotero.org/styles/apa-es-ano-apellido-et-al</id>
     <link href="http://www.zotero.org/styles/apa" rel="template"/>
     <category citation-format="author-date"/>
@@ -123,5 +123,6 @@
   </bibliography>
 
 </style>
+
 
 
