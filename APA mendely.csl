@@ -6,13 +6,14 @@
        default-locale="es-ES">
 
   <info>
-    <title>APA Español – citas por año y apellido solo</title>
-    <id>http://www.zotero.org/styles/apa-es-orden-por-ano-apellido</id>
+    <title>APA Español – citas por año, apellido solo y et al.</title>
+    <id>http://www.zotero.org/styles/apa-es-ano-apellido-et-al</id>
     <link href="http://www.zotero.org/styles/apa" rel="template"/>
     <category citation-format="author-date"/>
     <updated>2026-01-13</updated>
   </info>
 
+  <!-- ===== LOCALIZACIÓN ===== -->
   <locale xml:lang="es">
     <terms>
       <term name="and">y</term>
@@ -22,25 +23,26 @@
 
   <!-- ===== MACROS ===== -->
 
- <macro name="author-intext">
-  <names variable="author">
-    <name form="short"
-          and="text"
-          delimiter=", "
-          initialize-with=""
-          name-as-sort-order="false"/>
-    <substitute>
-      <names variable="editor"/>
-      <text variable="title"/>
-    </substitute>
-  </names>
-</macro>
+  <!-- Apellido SOLO para citas en texto -->
+  <macro name="author-intext">
+    <names variable="author">
+      <name form="short"
+            and="text"
+            delimiter=", "
+            initialize-with=""/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
 
-  <!-- BIBLIOGRAFÍA NORMAL -->
+  <!-- Autores para bibliografía (APA normal) -->
   <macro name="author-bib">
     <names variable="author">
-      <name and="text" initialize-with=". " delimiter=", "/>
-      <label form="short" prefix=", "/>
+      <name and="text"
+            initialize-with=". "
+            delimiter=", "/>
       <substitute>
         <names variable="editor"/>
         <text variable="title"/>
@@ -80,12 +82,15 @@
   </macro>
 
   <!-- ===== CITAS EN TEXTO ===== -->
-  <citation collapse="year" disambiguate-add-year-suffix="true">
+  <citation collapse="year"
+            disambiguate-add-year-suffix="true"
+            et-al-min="3"
+            et-al-use-first="1">
+
     <sort>
       <key macro="date-sort-group" sort="ascending"/>
       <key macro="date-sort" sort="ascending"/>
-      <key macro="author-sort" names-min="3" names-use-first="1"/>
-      <key variable="status"/>
+      <key macro="author-sort"/>
     </sort>
 
     <layout prefix="(" suffix=")" delimiter="; ">
@@ -97,7 +102,10 @@
   </citation>
 
   <!-- ===== BIBLIOGRAFÍA ===== -->
-  <bibliography hanging-indent="true" et-al-min="7" et-al-use-first="6">
+  <bibliography hanging-indent="true"
+                et-al-min="7"
+                et-al-use-first="6">
+
     <sort>
       <key macro="author-sort"/>
       <key macro="date-sort-group"/>
