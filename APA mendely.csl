@@ -22,16 +22,17 @@
 
   <!-- ===== MACROS ===== -->
 
-  <!-- SOLO APELLIDO EN TEXTO -->
-  <macro name="author-intext">
-    <names variable="author">
-      <name form="short" and="text" delimiter=", "/>
-      <substitute>
-        <names variable="editor"/>
-        <text variable="title"/>
-      </substitute>
-    </names>
-  </macro>
+ <macro name="author-intext">
+  <names variable="author"
+         et-al-min="3"
+         et-al-use-first="1">
+    <name form="short" and="text" delimiter=", "/>
+    <substitute>
+      <names variable="editor"/>
+      <text variable="title"/>
+    </substitute>
+  </names>
+</macro>
 
   <!-- BIBLIOGRAFÍA NORMAL -->
   <macro name="author-bib">
@@ -112,3 +113,4 @@
   </bibliography>
 
 </style>
+
