@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       class="in-text"
+       version="1.0"
+       demote-non-dropping-particle="sort-only"
+       default-locale="es-ES">
+
+  <info>
+    <title>APA Español – citas ordenadas por año</title>
+    <id>http://www.zotero.org/styles/apa-es-orden-por-ano</id>
+    <link href="http://www.zotero.org/styles/apa-es-orden-por-ano" rel="self"/>
+    <link href="http://www.zotero.org/styles/apa" rel="template"/>
+    <author>
+      <name>Adaptación personalizada</name>
+    </author>
+    <category citation-format="author-date"/>
+    <summary>APA en español con citas en texto ordenadas por año y uso de "y" en lugar de "&amp;".</summary>
+    <updated>2026-01-13</updated>
+  </info>
+
+  <!-- ===== LOCALES ===== -->
+  <locale xml:lang="es">
+    <terms>
+      <term name="and">y</term>
+      <term name="et-al">et al.</term>
+    </terms>
+  </locale>
+
+  <!-- ===== MACROS ===== -->
+
+  <macro name="author-intext">
+    <names variable="author">
+      <name and="text" initialize-with=". " delimiter=", "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="author-bib">
+    <names variable="author">
+      <name and="text" initialize-with=". " delimiter=", "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="issued-year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="date-sort">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="date-sort-group">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text value="9999"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="author-sort">
+    <names variable="author">
+      <name form="long"/>
+    </names>
+  </macro>
+
+  <!-- ===== CITATION (EN TEXTO) ===== -->
+  <citation collapse="year" disambiguate-add-year-suffix="true">
+    <sort>
+      <!-- ORDEN POR AÑO -->
+      <key macro="date-sort-group" sort="ascending"/>
+      <key macro="date-sort" sort="ascending"/>
+      <key macro="author-sort" names-min="3" names-use-first="1"/>
+      <key variable="status"/>
+    </sort>
+
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-intext"/>
+        <text macro="issued-year"/>
+      </group>
+    </layout>
+  </citation>
+
+  <!-- ===== BIBLIOGRAPHY ===== -->
+  <bibliography hanging-indent="true" et-al-min="7" et-al-use-first="6">
+    <sort>
+      <key macro="author-sort"/>
+      <key macro="date-sort-group"/>
+      <key macro="date-sort"/>
+      <key variable="title"/>
+    </sort>
+
+    <layout>
+      <group delimiter=". ">
+        <text macro="author-bib"/>
+        <text macro="issued-year"/>
+        <text variable="title"/>
+      </group>
+    </layout>
+  </bibliography>
+
+</style>
