@@ -6,7 +6,7 @@
        default-locale="es-ES">
 
   <info>
-    <title>APA Español – citas por año, apellido solo y et al.</title>
+    <title>APA Breso.</title>
     <id>http://www.zotero.org/styles/apa-es-ano-apellido-et-al</id>
     <link href="http://www.zotero.org/styles/apa" rel="template"/>
     <category citation-format="author-date"/>
@@ -23,13 +23,13 @@
 
   <!-- ===== MACROS ===== -->
 
-  <!-- Apellido SOLO para citas en texto -->
+  <!-- SOLO APELLIDO PARA CITAS EN TEXTO -->
   <macro name="author-intext">
     <names variable="author">
       <name form="short"
+            initialize-with=""
             and="text"
-            delimiter=", "
-            initialize-with=""/>
+            delimiter=", "/>
       <substitute>
         <names variable="editor"/>
         <text variable="title"/>
@@ -37,11 +37,12 @@
     </names>
   </macro>
 
-  <!-- Autores para bibliografía (APA normal) -->
+  <!-- AUTORES EN BIBLIOGRAFÍA (APELLIDO, INICIALES) -->
   <macro name="author-bib">
     <names variable="author">
-      <name and="text"
+      <name name-as-sort-order="first"
             initialize-with=". "
+            and="text"
             delimiter=", "/>
       <substitute>
         <names variable="editor"/>
@@ -83,9 +84,9 @@
 
   <!-- ===== CITAS EN TEXTO ===== -->
   <citation collapse="year"
-            disambiguate-add-year-suffix="true"
             et-al-min="3"
-            et-al-use-first="1">
+            et-al-use-first="1"
+            disambiguate-add-year-suffix="true">
 
     <sort>
       <key macro="date-sort-group" sort="ascending"/>
@@ -116,12 +117,10 @@
     <layout>
       <group delimiter=". ">
         <text macro="author-bib"/>
-        <text macro="issued-year"/>
+        <text macro="issued-year" prefix="(" suffix=")"/>
         <text variable="title"/>
       </group>
     </layout>
   </bibliography>
 
 </style>
-
-
